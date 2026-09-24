@@ -8,14 +8,14 @@ const CATEGORIAS: Categoria[] = [
     nome: "Comidas",
     corBorda: "#501673",
     corSeta: "#501673",
-    imagem: require("../../../assets/images/menu/categoria-comidas.png"),
+    imagem: "categoria-comidas",
   },
   {
     id: "bebidas",
     nome: "Bebidas",
     corBorda: "#1b873f",
     corSeta: "#1b873f",
-    imagem: require("../../../assets/images/menu/categoria-bebidas.png"),
+    imagem: "categoria-bebidas",
   },
 ];
 

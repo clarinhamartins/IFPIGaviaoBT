@@ -14,8 +14,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "14g",
     carboidratos: "32g",
     gorduras: "18g",
-    imagem: require("../../../assets/images/menu/pastel-de-carne.png"),
-    imagemGrande: require("../../../assets/images/menu/pastel-de-carne.png"),
+    imagem: "pastel-de-carne",
+    imagemGrande: "pastel-de-carne",
   },
   {
     id: "coxinha-de-frango",
@@ -28,8 +28,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "18g",
     carboidratos: "38g",
     gorduras: "15g",
-    imagem: require("../../../assets/images/menu/coxinha-de-frango.png"),
-    imagemGrande: require("../../../assets/images/menu/coxinha-de-frango.png"),
+    imagem: "coxinha-de-frango",
+    imagemGrande: "coxinha-de-frango",
   },
   {
     id: "cuscuz-com-ovo",
@@ -42,8 +42,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "12g",
     carboidratos: "40g",
     gorduras: "9g",
-    imagem: require("../../../assets/images/menu/cuscuz-com-ovo.png"),
-    imagemGrande: require("../../../assets/images/menu/cuscuz-com-ovo.png"),
+    imagem: "cuscuz-com-ovo",
+    imagemGrande: "cuscuz-com-ovo",
   },
   {
     id: "arrumadinho-completo",
@@ -56,8 +56,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "22g",
     carboidratos: "45g",
     gorduras: "12g",
-    imagem: require("../../../assets/images/menu/arrumadinho-completo.png"),
-    imagemGrande: require("../../../assets/images/menu/arrumadinho-completo-large.png"),
+    imagem: "arrumadinho-completo",
+    imagemGrande: "arrumadinho-completo-large",
   },
   {
     id: "suco-de-laranja",
@@ -70,8 +70,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "2g",
     carboidratos: "26g",
     gorduras: "0g",
-    imagem: require("../../../assets/images/menu/suco-de-laranja.png"),
-    imagemGrande: require("../../../assets/images/menu/suco-de-laranja.png"),
+    imagem: "suco-de-laranja",
+    imagemGrande: "suco-de-laranja",
   },
   {
     id: "refrigerante-lata",
@@ -84,8 +84,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "0g",
     carboidratos: "37g",
     gorduras: "0g",
-    imagem: require("../../../assets/images/menu/refrigerante.png"),
-    imagemGrande: require("../../../assets/images/menu/refrigerante.png"),
+    imagem: "refrigerante",
+    imagemGrande: "refrigerante",
   },
   {
     id: "cafe-expresso",
@@ -98,8 +98,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "0g",
     carboidratos: "1g",
     gorduras: "0g",
-    imagem: require("../../../assets/images/menu/cafe-expresso.png"),
-    imagemGrande: require("../../../assets/images/menu/cafe-expresso.png"),
+    imagem: "cafe-expresso",
+    imagemGrande: "cafe-expresso",
   },
   {
     id: "suco-acerola",
@@ -112,8 +112,8 @@ const PRODUTOS: Produto[] = [
     proteinas: "1g",
     carboidratos: "15g",
     gorduras: "0g",
-    imagem: require("../../../assets/images/menu/suco-acerola.png"),
-    imagemGrande: require("../../../assets/images/menu/suco-acerola.png"),
+    imagem: "suco-acerola",
+    imagemGrande: "suco-acerola",
   },
 ];
 
