@@ -13,7 +13,7 @@ export type HomeActions = {
   carregarCategorias: () => Promise<void>;
 };
 
-export function useHomeViewModel(): HomeState & HomeActions {
+export function useHomeViewModel(): [ HomeState, HomeActions ] {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
@@ -36,5 +36,9 @@ export function useHomeViewModel(): HomeState & HomeActions {
     carregarCategorias();
   }, []);
 
-  return { categorias, carregando, erro, carregarCategorias };
+  const state : HomeState = { categorias, carregando, erro };
+
+  const actions : HomeActions = { carregarCategorias };
+
+  return [state, actions];
 }
