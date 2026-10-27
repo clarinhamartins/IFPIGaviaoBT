@@ -1,4 +1,6 @@
-import { Produto } from "../entities/Produto";
+import { Produto } from "@/model/entities/Produto";
+import { IProductDataSource } from "@/model/datasources/iProductDataSource";
+import { DataSourceError } from "@/model/errors";
 
 const DELAY_MS = 600;
 
@@ -117,14 +119,25 @@ const PRODUTOS: Produto[] = [
   },
 ];
 
-export class ProdutoRepository {
+export class ProductDataSource implements IProductDataSource {
   async listarPorCategoria(categoriaId: string): Promise<Produto[]> {
-    await new Promise((resolve) => setTimeout(resolve, DELAY_MS));
-    return PRODUTOS.filter((p) => p.categoriaId === categoriaId);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, DELAY_MS));
+      return PRODUTOS.filter((p) => p.categoriaId === categoriaId);
+    } catch (err: unknown) {
+      const detalhe = err instanceof Error ? err.message : "Erro desconhecido";
+      throw new DataSourceError(`Falha ao obter produtos da categoria: ${detalhe}`);
+    }
   }
 
-  async buscarPorId(id: string): Promise<Produto | undefined> {
-    await new Promise((resolve) => setTimeout(resolve, DELAY_MS));
-    return PRODUTOS.find((p) => p.id === id);
+  async buscarPorId(id: string): Promise<Produto | null> {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, DELAY_MS));
+      const produto = PRODUTOS.find((p) => p.id === id);
+      return produto ?? null;
+    } catch (err: unknown) {
+      const detalhe = err instanceof Error ? err.message : "Erro desconhecido";
+      throw new DataSourceError(`Falha ao buscar produto por ID: ${detalhe}`);
+    }
   }
 }

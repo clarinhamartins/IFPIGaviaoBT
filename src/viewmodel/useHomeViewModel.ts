@@ -1,7 +1,8 @@
-// src/viewmodel/useHomeViewModel.ts
 import { useEffect, useState } from "react";
-import { Categoria } from "../model/entities/Categoria";
-import { CardapioService } from "../model/services/CardapioService";
+import { Categoria } from "@/model/entities/Categoria";
+import { DomainError } from "@/model/errors";
+import { IMenuUseCases } from "@/usecase/iMenuUseCases";
+import { menuUseCases as defaultMenuUseCases } from "@/di/container";
 
 export type HomeState = {
   categorias: Categoria[];
@@ -13,20 +14,25 @@ export type HomeActions = {
   carregarCategorias: () => Promise<void>;
 };
 
-export function useHomeViewModel(): [ HomeState, HomeActions ] {
+export function useHomeViewModel(
+  useCases: IMenuUseCases = defaultMenuUseCases
+): [HomeState, HomeActions] {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
-
-  const service = new CardapioService();
 
   async function carregarCategorias() {
     try {
       setCarregando(true);
       setErro(null);
-      setCategorias(await service.listarCategorias());
-    } catch (err: any) {
-      setErro(err.message);
+      const resultado = await useCases.listarCategorias();
+      setCategorias(resultado);
+    } catch (err: unknown) {
+      if (err instanceof DomainError) {
+        setErro(err.message);
+      } else {
+        setErro("Ocorreu um erro inesperado ao carregar as categorias.");
+      }
     } finally {
       setCarregando(false);
     }
@@ -34,11 +40,10 @@ export function useHomeViewModel(): [ HomeState, HomeActions ] {
 
   useEffect(() => {
     carregarCategorias();
-  }, []);
+  }, [useCases]);
 
-  const state : HomeState = { categorias, carregando, erro };
-
-  const actions : HomeActions = { carregarCategorias };
+  const state: HomeState = { categorias, carregando, erro };
+  const actions: HomeActions = { carregarCategorias };
 
   return [state, actions];
 }
